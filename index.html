@@ -954,6 +954,95 @@ body.dark .admin-table th,body.dark .admin-table td{border-color:#40504b}
  .detail-grid img{height:300px}
 }
 
+
+/* ===== MAKTABA CORDOBA FRONT PAGE 2.0 ===== */
+html{scroll-behavior:smooth}
+body{background:#f6f9fe}
+.navbar{
+  padding:0 6%;
+  min-height:78px;
+  background:linear-gradient(105deg,#082f6b,#0d47a1 48%,#1976d2)!important;
+}
+.logo{font-size:25px;white-space:nowrap}
+.hero{
+  min-height:400px;
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(105deg,rgba(5,31,72,.93),rgba(13,71,161,.82)),
+    url("https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=1800&q=85") center/cover;
+}
+.hero:before{
+  content:"";position:absolute;width:420px;height:420px;border-radius:50%;
+  background:rgba(255,255,255,.08);right:-130px;top:-180px;
+}
+.hero-content{position:relative;z-index:2;max-width:900px}
+.hero-badge{
+  display:inline-flex;gap:8px;align-items:center;padding:8px 15px;border-radius:999px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  font-size:13px;margin-bottom:17px;backdrop-filter:blur(8px)
+}
+.hero h1{font-size:54px;line-height:1.12;margin-bottom:14px}
+.hero p{max-width:720px;margin:0 auto 25px;font-size:18px;color:#eaf3ff}
+.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.hero-secondary{
+  display:inline-block;padding:15px 25px;border-radius:12px;color:#fff;text-decoration:none;
+  font-weight:700;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.10)
+}
+.hero-secondary:hover{background:#fff;color:#0d47a1}
+.search-area{
+  max-width:1080px;margin:-32px auto 20px;padding:15px;border-radius:20px;
+  border:1px solid rgba(13,71,161,.08);box-shadow:0 16px 45px rgba(8,47,107,.13)
+}
+.search-box input,.search-box select{background:#f8fbff;border-color:#dce8f8}
+.search-box input:focus,.search-box select:focus{border-color:#1976d2;box-shadow:0 0 0 3px rgba(25,118,210,.10)}
+.home-stats{
+  max-width:1000px;margin:25px auto 0;padding:0 20px;display:grid;
+  grid-template-columns:repeat(4,1fr);gap:14px
+}
+.home-stat{background:#fff;border:1px solid #e6eef9;border-radius:16px;padding:17px;text-align:center;box-shadow:0 7px 20px rgba(13,71,161,.06)}
+.home-stat strong{display:block;font-size:21px;color:#0d47a1}.home-stat span{font-size:12px;color:#718096}
+.section{margin:58px auto}.section-title h2{font-size:34px}
+.section-title h2:after{content:"";display:block;width:52px;height:4px;border-radius:5px;background:#1976d2;margin:11px auto 0}
+.categories{grid-template-columns:repeat(6,1fr);gap:15px}
+.category{
+  min-height:145px;padding:22px 10px;position:relative;overflow:hidden;
+  border:1px solid #e4edf9;background:linear-gradient(145deg,#fff,#f5f9ff)
+}
+.category:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:rgba(25,118,210,.07);right:-35px;bottom:-45px}
+.category:hover{background:#fff;transform:translateY(-8px);border-color:#90caf9}
+.category h3{font-size:15px;position:relative;z-index:1}.category .emoji{position:relative;z-index:1}
+.category small{display:block;margin-top:6px;color:#789;position:relative;z-index:1}
+.books-grid{gap:22px}.book-card{border:1px solid #e8eef7}
+.book-image{height:275px}.book-info{padding:17px}
+.feature{border:1px solid #e5edf8;box-shadow:0 8px 25px rgba(13,71,161,.06)}
+.footer-grid a,footer a{color:#e3f2fd;text-decoration:none}
+.promo-banner{
+  max-width:1160px;margin:20px auto 0;padding:0 20px
+}
+.promo-inner{
+  background:linear-gradient(115deg,#082f6b,#1565c0);border-radius:22px;padding:30px;
+  color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  box-shadow:0 14px 35px rgba(13,71,161,.20)
+}
+.promo-inner h2{margin-bottom:7px}.promo-inner p{color:#dbeafe}
+.promo-inner a{white-space:nowrap;background:#fff;color:#0d47a1;padding:13px 20px;border-radius:11px;text-decoration:none;font-weight:bold}
+@media(max-width:950px){.categories{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){
+ .navbar{padding:0 4%}.nav-buttons{margin-left:auto;margin-right:8px}.logo{font-size:18px}
+ .hero{min-height:360px}.hero h1{font-size:36px}.hero p{font-size:16px}
+ .home-stats{grid-template-columns:repeat(2,1fr)}.categories{grid-template-columns:repeat(2,1fr)}
+ .promo-inner{flex-direction:column;text-align:center}.section-title h2{font-size:28px}
+}
+
+
+.one-page-note{
+  max-width:1000px;margin:28px auto 0;padding:15px 22px;border-radius:14px;
+  background:#eef6ff;border:1px solid #cfe4ff;color:#0d47a1;text-align:center;
+  display:flex;justify-content:center;gap:12px;flex-wrap:wrap
+}
+.one-page-note span{color:#52708e;font-size:14px}
+
 </style>
 </head>
 
@@ -992,22 +1081,14 @@ body.dark .admin-table th,body.dark .admin-table td{border-color:#40504b}
 <section class="hero" id="home">
 
     <div class="hero-content">
-
-        <h1>
-            Welcome to
-            <span>Maktaba Cordoba</span>
-        </h1>
-
-        <p>
-            Your online Islamic bookstore for Quran, Hadith,
-            Tafseer, Fiqh, Dars-e-Nizami and Islamic literature.
-        </p>
-
-        <a href="#books" class="hero-btn">
-            📚 Explore Books
-        </a>
-
-    </div>
+        <div class="hero-badge">✨ Authentic Islamic Knowledge • One Library</div>
+        <h1>Discover Knowledge with<br><span>Maktaba Cordoba</span></h1>
+        <p>Explore Quran, Hadith, Tafseer, Fiqh, Dars-e-Nizami and carefully selected Islamic literature in one modern library.</p>
+        <div class="hero-actions">
+          <a href="#books" class="hero-btn">📚 Explore Books</a>
+          <a href="#categories" class="hero-secondary">Browse Categories</a>
+        </div>
+     </div>
 
 </section>
 
@@ -1040,6 +1121,13 @@ body.dark .admin-table th,body.dark .admin-table td{border-color:#40504b}
 
 </div>
 
+<div class="home-stats">
+  <div class="home-stat"><strong>500+</strong><span>Islamic Books</span></div>
+  <div class="home-stat"><strong>6</strong><span>Main Categories</span></div>
+  <div class="home-stat"><strong>24/7</strong><span>Browse Online</span></div>
+  <div class="home-stat"><strong>🇵🇰</strong><span>Pakistan Delivery</span></div>
+</div>
+
 
 <!-- CATEGORIES -->
 <section class="section" id="categories">
@@ -1053,32 +1141,32 @@ body.dark .admin-table th,body.dark .admin-table td{border-color:#40504b}
 
         <div class="category" onclick="selectCategory('Quran')">
             <div class="emoji">📖</div>
-            <h3>Quran</h3>
+            <h3>Quran</h3><small>Translations & Studies</small>
         </div>
 
         <div class="category" onclick="selectCategory('Hadith')">
             <div class="emoji">📜</div>
-            <h3>Hadith</h3>
+            <h3>Hadith</h3><small>Collections & Sunnah</small>
         </div>
 
         <div class="category" onclick="selectCategory('Tafseer')">
             <div class="emoji">📚</div>
-            <h3>Tafseer</h3>
+            <h3>Tafseer</h3><small>Quranic Commentary</small>
         </div>
 
         <div class="category" onclick="selectCategory('Fiqh')">
             <div class="emoji">🕌</div>
-            <h3>Fiqh</h3>
+            <h3>Fiqh</h3><small>Islamic Jurisprudence</small>
         </div>
 
         <div class="category" onclick="selectCategory('Dars Nizami')">
             <div class="emoji">🎓</div>
-            <h3>Dars Nizami</h3>
+            <h3>Dars Nizami</h3><small>Course Books</small>
         </div>
 
         <div class="category" onclick="selectCategory('History')">
             <div class="emoji">🏛️</div>
-            <h3>Islamic History</h3>
+            <h3>Islamic History</h3><small>Seerah & History</small>
         </div>
 
     </div>
@@ -1103,6 +1191,23 @@ body.dark .admin-table th,body.dark .admin-table td{border-color:#40504b}
 
 </section>
 
+
+
+<div class="promo-banner">
+  <div class="promo-inner">
+    <div>
+      <h2>🎓 Dars-e-Nizami Library</h2>
+      <p>Explore course books and Islamic study material organised in one dedicated section.</p>
+    </div>
+    <a href="#books" onclick="selectCategory('Dars Nizami')">Explore Dars Nizami →</a>
+  </div>
+</div>
+
+
+<div class="one-page-note">
+  <strong>📚 All Categories on One Page</strong>
+  <span>Click any category to instantly filter books below — no separate pages.</span>
+</div>
 
 <!-- FEATURES -->
 <section class="section">
@@ -1386,16 +1491,12 @@ body.dark .admin-table th,body.dark .admin-table td{border-color:#40504b}
         </div>
 
         <div>
-
-            <h3>Contact</h3>
-
-            <p>📱 WhatsApp: 03117585046</p>
-            <p>📧 Email: info@maktabacordoba.com</p>
-
+    <h3>Contact</h3>
+    <p>📱 WhatsApp: <a href="https://wa.me/923117585046" target="_blank">03117585046</a></p>
+    <p>📧 Email: info@maktabacordoba.com</p>
         </div>
-
     </div>
-
+ 
     <div class="copyright">
 
         © 2026 Maktaba Cordoba — All Rights Reserved
@@ -1545,7 +1646,6 @@ function changeQuantity(id,amount){
   item.quantity+=amount;
   if(item.quantity<=0) cart=cart.filter(x=>x.id!==id);
   saveData(); updateCart();
-initProNavigation();
 }
 
 function removeFromCart(id){
