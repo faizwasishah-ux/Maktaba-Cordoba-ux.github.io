@@ -1595,14 +1595,18 @@ function displayBooks(list=books){
           <button class="quick-view" onclick="openBookModal(${book.id})">👁 Quick View</button>
           
           <!-- WHATSAPP BUTTON -->
-<a href="https://wa.me/923117585046?text=Assalamualaikum!%20Mujhe%20*Sahih%20Bukhari*%20by%20*Imam%20Bukhari*%20order%20karni%20hai.%0A%0APrice:%20Rs.%202500%0APayment:%20Cash%20on%20Delivery%0ADelivery%20Address:%20" class="whatsapp-btn">
-    📱 Order on WhatsApp
-</a>
-<div style="margin-top: 8px; font-size: 12px; color: #333; text-align: center; line-height: 1.5;">
-    <b>Payment:</b> Cash on Delivery ✅<br>
-    <b>Delivery:</b> All Pakistan - Rs. 250 | 3 to 5 Days
-</div>
-
+          <a href="https://wa.me/923117585046?text=Assalamualaikum!%20Mujhe%20*${book.title}*%20by%20*${book.author}*%20order%20karni%20hai.%0A%0APrice:%20Rs.%20${book.price}%0APayment:%20Cash%20on%20Delivery%0ADelivery%20Address:%20" class="whatsapp-btn">
+              📱 Order on WhatsApp
+          </a>
+          <div style="margin-top: 8px; font-size: 12px; color: #333; text-align: center; line-height: 1.5;">
+              <b>Payment:</b> Cash on Delivery ✅<br>
+              <b>Delivery:</b> All Pakistan - Rs. 250 | 3 to 5 Days
+          </div>
+        </div>
+      </div>
+    `;
+  });
+} // <-- YE WALA } ZAROORI THA
 function filterBooks(){
   const search=document.getElementById("searchInput").value.toLowerCase();
   const category=document.getElementById("categoryFilter").value;
