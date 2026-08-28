@@ -915,6 +915,24 @@ button:disabled {
   box-shadow:none !important;
 }
 
+
+/* ===== WHATSAPP BUTTON ===== */
+.whatsapp-btn{
+    background:linear-gradient(135deg,#25D366,#1ebe5c) !important;
+    color:white !important;
+    padding:11px 14px;
+    text-decoration:none;
+    border-radius:8px;
+    display:block;
+    margin-top:8px;
+    font-weight:bold;
+    text-align:center;
+    transition: all .25s ease;
+}
+.whatsapp-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(37,211,102,.3);
+}
 /* ===== PROFESSIONAL UPGRADE ===== */
 .mobile-menu-btn{display:none;border:0;background:rgba(255,255,255,.15);color:#fff;padding:9px 12px;border-radius:9px;font-size:18px;cursor:pointer}
 .nav-links.open{display:flex}
@@ -1575,6 +1593,14 @@ function displayBooks(list=books){
             </button>
           </div>
           <button class="quick-view" onclick="openBookModal(${book.id})">👁 Quick View</button>
+          
+          <!-- WHATSAPP BUTTON -->
+          <a href="https://wa.me/923117585046?text=Assalamualaikum!%20Mujhe%20*${book.title}*%20by%20*${book.author}*%20order%20karni%20hai.%20Price:%20${money(book.price)}" 
+             target="_blank" 
+             class="whatsapp-btn">
+             📱 Order on WhatsApp
+          </a>
+
         </div>
       </div>`;
   });
