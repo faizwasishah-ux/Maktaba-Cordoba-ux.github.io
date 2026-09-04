@@ -1,1873 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Maktaba Cordoba | Islamic Bookstore</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
-
-:root{
-    --primary:#0d47a1;
-    --secondary:#1976d2;
-    --gold:#1565c0;
-    --light:#f5f9ff;
-    --white:#fff;
-    --dark:#17211f;
-    --text:#333;
-    --border:#ddd;
-}
-
-body{
-    background:var(--light);
-    color:var(--text);
-}
-
-/* NAVBAR */
-.navbar{
-    background:linear-gradient(135deg,#0d47a1,#1976d2);
-    color:white;
-    padding:15px 6%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 3px 15px rgba(0,0,0,.2);
-}
-
-.logo{
-    font-size:24px;
-    font-weight:bold;
-}
-
-.logo span{
-    color:#e3f2fd;
-}
-
-.nav-links{
-    display:flex;
-    gap:25px;
-    align-items:center;
-}
-
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.nav-links a:hover{
-    color:#e3f2fd;
-}
-
-.nav-buttons{
-    display:flex;
-    gap:10px;
-}
-
-.icon-btn{
-    border:0;
-    background:rgba(255,255,255,.15);
-    color:white;
-    padding:10px 14px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:16px;
-}
-
-.cart-count{
-    background:#e53935;
-    border-radius:50%;
-    padding:3px 7px;
-    font-size:12px;
-}
-
-/* HERO */
-.hero{
-    min-height:480px;
-    background:
-    linear-gradient(rgba(13,71,161,.86),rgba(25,118,210,.82)),
-    url("https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=1600&q=80")
-    center/cover;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
-    padding:50px 20px;
-}
-
-.hero-content{
-    max-width:850px;
-}
-
-.hero h1{
-    font-size:52px;
-    margin-bottom:18px;
-}
-
-.hero h1 span{
-    color:#e3f2fd;
-}
-
-.hero p{
-    font-size:20px;
-    line-height:1.7;
-    margin-bottom:30px;
-}
-
-.hero-btn{
-    display:inline-block;
-    background:#d4a72c;
-    color:#fff;
-    text-decoration:none;
-    padding:14px 28px;
-    border-radius:10px;
-    font-weight:bold;
-}
-
-/* SEARCH */
-.search-area{
-    max-width:1100px;
-    margin:-35px auto 40px;
-    background:white;
-    padding:25px;
-    border-radius:18px;
-    box-shadow:0 10px 35px rgba(0,0,0,.12);
-    position:relative;
-    z-index:10;
-}
-
-.search-box{
-    display:flex;
-    gap:10px;
-}
-
-.search-box input,
-.search-box select{
-    padding:15px;
-    border:1px solid var(--border);
-    border-radius:10px;
-    outline:none;
-}
-
-.search-box input{
-    flex:1;
-}
-
-/* SECTIONS */
-.section{
-    max-width:1200px;
-    margin:60px auto;
-    padding:0 20px;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:35px;
-}
-
-.section-title h2{
-    font-size:32px;
-    color:var(--primary);
-}
-
-.section-title p{
-    margin-top:8px;
-    color:#777;
-}
-
-/* CATEGORIES */
-.categories{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:18px;
-}
-
-.category{
-    background:white;
-    padding:25px 15px;
-    border-radius:15px;
-    text-align:center;
-    cursor:pointer;
-    transition:.3s;
-    box-shadow:0 5px 20px rgba(0,0,0,.07);
-}
-
-.category:hover{
-    transform:translateY(-5px);
-    background:#e3f2fd;
-}
-
-.category .emoji{
-    font-size:38px;
-    margin-bottom:10px;
-}
-
-/* BOOKS */
-.books-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.book-card{
-    background:white;
-    border-radius:17px;
-    overflow:hidden;
-    box-shadow:0 6px 22px rgba(0,0,0,.08);
-    transition:.3s;
-}
-
-.book-card:hover{
-    transform:translateY(-7px);
-    box-shadow:0 12px 30px rgba(0,0,0,.14);
-}
-
-.book-image{
-    height:260px;
-    background:#eee;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-}
-
-.book-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.book-info{
-    padding:18px;
-}
-
-.book-category{
-    color:var(--secondary);
-    font-size:13px;
-    font-weight:bold;
-}
-
-.book-title{
-    font-size:18px;
-    margin:8px 0;
-    min-height:44px;
-}
-
-.author{
-    color:#777;
-    font-size:14px;
-}
-
-.price{
-    color:var(--primary);
-    font-size:21px;
-    font-weight:bold;
-    margin:12px 0;
-}
-
-.book-actions{
-    display:flex;
-    gap:8px;
-}
-
-.btn{
-    border:0;
-    padding:11px 14px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.btn-cart{
-    background:var(--primary);
-    color:white;
-    flex:1;
-}
-
-.btn-buy{
-    background:var(--gold);
-    color:white;
-}
-
-/* FEATURES */
-.features{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.feature{
-    background:white;
-    padding:30px;
-    text-align:center;
-    border-radius:15px;
-}
-
-.feature-icon{
-    font-size:40px;
-    margin-bottom:12px;
-}
-
-/* CART */
-.cart-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.5);
-    z-index:2000;
-    display:none;
-}
-
-.cart{
-    position:absolute;
-    right:0;
-    top:0;
-    height:100%;
-    width:420px;
-    max-width:100%;
-    background:white;
-    padding:25px;
-    overflow-y:auto;
-}
-
-.cart-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
-
-.close{
-    border:0;
-    background:#eee;
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    cursor:pointer;
-}
-
-.cart-item{
-    display:flex;
-    gap:12px;
-    padding:15px 0;
-    border-bottom:1px solid #ddd;
-}
-
-.cart-item img{
-    width:65px;
-    height:80px;
-    object-fit:cover;
-    border-radius:8px;
-}
-
-.cart-item-info{
-    flex:1;
-}
-
-.quantity{
-    display:flex;
-    gap:8px;
-    align-items:center;
-    margin-top:8px;
-}
-
-.quantity button{
-    width:28px;
-    height:28px;
-    border:0;
-    background:#eee;
-    cursor:pointer;
-    border-radius:5px;
-}
-
-.remove{
-    color:#e53935;
-    cursor:pointer;
-    font-size:13px;
-    margin-top:5px;
-}
-
-.cart-total{
-    margin-top:25px;
-    font-size:22px;
-    font-weight:bold;
-    display:flex;
-    justify-content:space-between;
-}
-
-.checkout-btn{
-    width:100%;
-    margin-top:20px;
-    padding:15px;
-    border:0;
-    background:var(--primary);
-    color:white;
-    border-radius:10px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* CHECKOUT */
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.6);
-    z-index:3000;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.modal-box{
-    background:white;
-    width:600px;
-    max-width:100%;
-    max-height:90vh;
-    overflow:auto;
-    padding:30px;
-    border-radius:18px;
-}
-
-.modal-header{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:20px;
-}
-
-.form-group{
-    margin-bottom:15px;
-}
-
-.form-group label{
-    display:block;
-    margin-bottom:6px;
-    font-weight:bold;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select{
-    width:100%;
-    padding:13px;
-    border:1px solid #ccc;
-    border-radius:8px;
-}
-
-.form-group textarea{
-    min-height:90px;
-}
-
-.submit-order{
-    width:100%;
-    background:#0d47a1;
-    color:white;
-    border:0;
-    padding:15px;
-    border-radius:9px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-/* FOOTER */
-footer{
-    background:#0d47a1;
-    color:white;
-    padding:50px 6% 20px;
-    margin-top:70px;
-}
-
-.footer-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:35px;
-}
-
-footer h3{
-    color:#e3f2fd;
-    margin-bottom:15px;
-}
-
-footer p,
-footer li{
-    color:#e3f2fd;
-    line-height:1.8;
-}
-
-footer ul{
-    list-style:none;
-}
-
-.copyright{
-    text-align:center;
-    border-top:1px solid rgba(255,255,255,.15);
-    padding-top:20px;
-    margin-top:30px;
-}
-
-/* DARK MODE */
-body.dark{
-    background:#121816;
-    color:#eef6ff;
-}
-
-body.dark .search-area,
-body.dark .category,
-body.dark .book-card,
-body.dark .feature,
-body.dark .modal-box,
-body.dark .cart{
-    background:#1c2724;
-    color:#eef6ff;
-}
-
-body.dark .book-title,
-body.dark .section-title h2{
-    color:#fff;
-}
-
-body.dark input,
-body.dark select,
-body.dark textarea{
-    background:#172b4d;
-    color:white;
-    border-color:#6b8fc4;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-    .navbar{
-        padding:13px 4%;
-    }
-
-    .nav-links{
-        display:none;
-    }
-
-    .logo{
-        font-size:19px;
-    }
-
-    .hero h1{
-        font-size:36px;
-    }
-
-    .hero p{
-        font-size:16px;
-    }
-
-    .search-box{
-        flex-direction:column;
-    }
-
-    .books-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-    }
-
-    .book-image{
-        height:220px;
-    }
-
-    .book-info{
-        padding:12px;
-    }
-
-    .book-title{
-        font-size:15px;
-    }
-
-    .price{
-        font-size:17px;
-    }
-
-    .book-actions{
-        flex-direction:column;
-    }
-}
-
-@media(max-width:450px){
-
-    .books-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .cart{
-        width:100%;
-    }
-}
-
-
-
-/* ===== PREMIUM NAVBAR ===== */
-.navbar{
-  min-height:76px;
-  padding:12px 5%;
-  background:rgba(13,71,161,.96) !important;
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(255,255,255,.16);
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  font-size:23px;
-  letter-spacing:.2px;
-  text-shadow:0 2px 10px rgba(0,0,0,.18);
-}
-
-.nav-links{
-  gap:8px !important;
-  align-items:center;
-}
-
-.nav-links a{
-  padding:11px 16px !important;
-  border-radius:10px;
-  color:#fff !important;
-  font-size:13px;
-  letter-spacing:.5px;
-  font-weight:700;
-  position:relative;
-  overflow:hidden;
-  border:1px solid transparent;
-}
-
-.nav-links a::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.18),transparent);
-  transform:translateX(-120%);
-  transition:transform .45s ease;
-}
-
-.nav-links a:hover::before{
-  transform:translateX(120%);
-}
-
-.nav-links a::after{
-  display:none !important;
-}
-
-.nav-links a:hover,
-.nav-links a.active{
-  background:rgba(255,255,255,.14);
-  border-color:rgba(255,255,255,.28);
-  box-shadow:0 6px 18px rgba(0,0,0,.13);
-  transform:translateY(-1px);
-}
-
-.nav-links a.active{
-  background:#fff;
-  color:#0d47a1 !important;
-  box-shadow:0 7px 20px rgba(0,0,0,.18);
-}
-
-.nav-buttons{
-  gap:8px !important;
-}
-
-.nav-buttons .icon-btn{
-  width:44px;
-  height:44px;
-  padding:0 !important;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:12px !important;
-  background:rgba(255,255,255,.12) !important;
-  border:1px solid rgba(255,255,255,.28) !important;
-  color:#fff !important;
-  box-shadow:0 5px 15px rgba(0,0,0,.12);
-  position:relative;
-}
-
-.nav-buttons .icon-btn:hover{
-  background:#fff !important;
-  color:#0d47a1 !important;
-  transform:translateY(-3px);
-  box-shadow:0 9px 22px rgba(0,0,0,.2);
-}
-
-.cart-count{
-  position:absolute;
-  top:-5px;
-  right:-5px;
-  min-width:19px;
-  height:19px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:0 5px;
-  background:#1565c0 !important;
-  color:#fff;
-  border:2px solid #fff;
-  font-weight:800;
-}
-
-.mobile-menu-btn{
-  border:1px solid rgba(255,255,255,.28) !important;
-  background:rgba(255,255,255,.12) !important;
-  color:#fff !important;
-  border-radius:11px !important;
-  box-shadow:0 5px 15px rgba(0,0,0,.12);
-}
-
-.mobile-menu-btn:hover{
-  background:#fff !important;
-  color:#0d47a1 !important;
-}
-
-@media(max-width:768px){
-  .navbar{
-    min-height:68px;
-    padding:10px 4%;
-  }
-
-  .logo{
-    font-size:18px;
-  }
-
-  .nav-links{
-    top:68px !important;
-    padding:14px !important;
-    border-radius:0 0 16px 16px;
-    box-shadow:0 12px 30px rgba(0,0,0,.2);
-    background:#0d47a1 !important;
-  }
-
-  .nav-links a{
-    width:100%;
-    text-align:center;
-  }
-}
-
-/* ===== PRO BUTTON SYSTEM ===== */
-.btn,
-.hero-btn,
-.checkout-btn,
-.submit-order,
-.icon-btn,
-.quick-view,
-.category,
-.nav-links a {
-  transition: all .25s ease;
-}
-
-.btn,
-.hero-btn,
-.checkout-btn,
-.submit-order {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(13,71,161,.12);
-  box-shadow: 0 7px 18px rgba(13,71,161,.16);
-}
-
-.btn::before,
-.hero-btn::before,
-.checkout-btn::before,
-.submit-order::before {
-  content:"";
-  position:absolute;
-  top:0;
-  left:-120%;
-  width:70%;
-  height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent);
-  transform:skewX(-20deg);
-  transition:left .55s ease;
-}
-
-.btn:hover::before,
-.hero-btn:hover::before,
-.checkout-btn:hover::before,
-.submit-order:hover::before {
-  left:140%;
-}
-
-.btn:hover,
-.hero-btn:hover,
-.checkout-btn:hover,
-.submit-order:hover {
-  transform:translateY(-3px);
-  box-shadow:0 12px 28px rgba(13,71,161,.25);
-}
-
-.btn:active,
-.hero-btn:active,
-.checkout-btn:active,
-.submit-order:active {
-  transform:translateY(-1px) scale(.98);
-}
-
-.btn-cart,
-.checkout-btn,
-.submit-order {
-  background:linear-gradient(135deg,#0d47a1,#1976d2) !important;
-  color:#fff !important;
-}
-
-.btn-buy,
-.hero-btn {
-  background:linear-gradient(135deg,#1565c0,#42a5f5) !important;
-  color:#fff !important;
-}
-
-.icon-btn {
-  border:1px solid rgba(255,255,255,.25);
-  background:rgba(255,255,255,.12);
-  backdrop-filter:blur(8px);
-}
-
-.icon-btn:hover {
-  background:#fff;
-  color:#0d47a1;
-  transform:translateY(-2px);
-  box-shadow:0 7px 18px rgba(0,0,0,.16);
-}
-
-.quick-view {
-  border:1px solid #d5e4fa;
-  background:linear-gradient(135deg,#fff,#edf5ff);
-  color:#0d47a1;
-  box-shadow:0 5px 14px rgba(13,71,161,.08);
-}
-
-.quick-view:hover {
-  background:#0d47a1;
-  color:#fff;
-  transform:translateY(-2px);
-}
-
-.wishlist-btn {
-  border:1px solid #d5e4fa;
-  transition:.25s ease;
-}
-
-.wishlist-btn:hover {
-  transform:translateY(-2px) scale(1.04);
-  box-shadow:0 7px 16px rgba(13,71,161,.14);
-}
-
-.hero-btn {
-  padding:15px 30px;
-  border-radius:12px;
-  letter-spacing:.2px;
-}
-
-.hero-btn::after {
-  content:" →";
-  transition:margin-left .2s ease;
-}
-
-.hero-btn:hover::after {
-  margin-left:5px;
-}
-
-.category {
-  border:1px solid transparent;
-}
-
-.category:hover {
-  border-color:#90caf9;
-  box-shadow:0 12px 28px rgba(13,71,161,.14);
-}
-
-.nav-links a {
-  position:relative;
-  padding:8px 2px;
-}
-
-.nav-links a::after {
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:0;
-  width:0;
-  height:2px;
-  background:#fff;
-  transition:width .25s ease;
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-  width:100%;
-}
-
-button:disabled {
-  opacity:.55;
-  cursor:not-allowed !important;
-  transform:none !important;
-  box-shadow:none !important;
-}
-
-
-/* ===== WHATSAPP BUTTON ===== */
-.whatsapp-btn{
-    background:linear-gradient(135deg,#25D366,#1ebe5c) !important;
-    color:white !important;
-    padding:11px 14px;
-    text-decoration:none;
-    border-radius:8px;
-    display:block;
-    margin-top:8px;
-    font-weight:bold;
-    text-align:center;
-    transition: all .25s ease;
-}
-.whatsapp-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 5px 15px rgba(37,211,102,.3);
-}
-/* ===== PROFESSIONAL UPGRADE ===== */
-.mobile-menu-btn{display:none;border:0;background:rgba(255,255,255,.15);color:#fff;padding:9px 12px;border-radius:9px;font-size:18px;cursor:pointer}
-.nav-links.open{display:flex}
-.book-stock{font-size:12px;color:#1976d2;margin-top:5px}
-.book-stock.out{color:#d32f2f}
-.wishlist-btn{border:0;background:#f2f4f3;width:38px;border-radius:8px;cursor:pointer}
-.wishlist-btn.active{background:#ffe7e7;color:#d32f2f}
-.quick-view{width:100%;margin-top:8px;background:#eaf2ff;color:#0d47a1;border:0;padding:9px;border-radius:8px;cursor:pointer;font-weight:bold}
-.admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:5000;display:none;align-items:center;justify-content:center;padding:15px}
-.admin-box{width:1000px;max-width:100%;max-height:94vh;overflow:auto;background:#fff;border-radius:18px;padding:25px}
-.admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:20px 0}
-.stat{background:#edf4ff;padding:18px;border-radius:12px}
-.stat strong{display:block;font-size:25px;color:#0d47a1;margin-top:5px}
-.admin-form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:15px 0}
-.admin-form input,.admin-form select{padding:11px;border:1px solid #ccc;border-radius:8px}
-.admin-form button{grid-column:1/-1;padding:12px;background:#0d47a1;color:#fff;border:0;border-radius:8px;font-weight:bold;cursor:pointer}
-.admin-table{width:100%;border-collapse:collapse;margin-top:15px;font-size:14px}
-.admin-table th,.admin-table td{padding:10px;border-bottom:1px solid #ddd;text-align:left}
-.admin-actions button{border:0;padding:6px 9px;border-radius:6px;cursor:pointer;margin:2px}
-.delete-book{background:#ffe6e6;color:#c62828}
-.view-order{background:#e7f4f1;color:#0d47a1}
-.detail-grid{display:grid;grid-template-columns:280px 1fr;gap:25px}
-.detail-grid img{width:100%;height:360px;object-fit:cover;border-radius:12px}
-.detail-price{font-size:28px;color:#0d47a1;font-weight:bold;margin:15px 0}
-.detail-desc{line-height:1.8;color:#666;margin-bottom:18px}
-.toast{position:fixed;right:20px;bottom:20px;background:#0d47a1;color:#fff;padding:13px 18px;border-radius:10px;z-index:7000;display:none;box-shadow:0 8px 25px rgba(0,0,0,.2)}
-body.dark .admin-box,body.dark .detail-grid{background:#1c2724;color:#eee}
-body.dark .stat{background:#26332f}
-body.dark .admin-form input,body.dark .admin-form select{background:#172b4d;color:#fff;border-color:#40504b}
-body.dark .admin-table th,body.dark .admin-table td{border-color:#40504b}
-@media(max-width:768px){
- .mobile-menu-btn{display:block}
- .nav-links{display:none;position:absolute;left:0;right:0;top:62px;background:#0d47a1;flex-direction:column;padding:15px;gap:15px}
- .admin-grid{grid-template-columns:repeat(2,1fr)}
- .admin-form{grid-template-columns:1fr}
- .detail-grid{grid-template-columns:1fr}
- .detail-grid img{height:300px}
-}
-
-
-/* ===== MAKTABA CORDOBA FRONT PAGE 2.0 ===== */
-html{scroll-behavior:smooth}
-body{background:#f6f9fe}
-.navbar{
-  padding:0 6%;
-  min-height:78px;
-  background:linear-gradient(105deg,#082f6b,#0d47a1 48%,#1976d2)!important;
-}
-.logo{font-size:25px;white-space:nowrap}
-.hero{
-  min-height:400px;
-  position:relative;
-  overflow:hidden;
-  background:
-    linear-gradient(105deg,rgba(5,31,72,.93),rgba(13,71,161,.82)),
-    url("https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=1800&q=85") center/cover;
-}
-.hero:before{
-  content:"";position:absolute;width:420px;height:420px;border-radius:50%;
-  background:rgba(255,255,255,.08);right:-130px;top:-180px;
-}
-.hero-content{position:relative;z-index:2;max-width:900px}
-.hero-badge{
-  display:inline-flex;gap:8px;align-items:center;padding:8px 15px;border-radius:999px;
-  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
-  font-size:13px;margin-bottom:17px;backdrop-filter:blur(8px)
-}
-.hero h1{font-size:54px;line-height:1.12;margin-bottom:14px}
-.hero p{max-width:720px;margin:0 auto 25px;font-size:18px;color:#eaf3ff}
-.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.hero-secondary{
-  display:inline-block;padding:15px 25px;border-radius:12px;color:#fff;text-decoration:none;
-  font-weight:700;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.10)
-}
-.hero-secondary:hover{background:#fff;color:#0d47a1}
-.search-area{
-  max-width:1080px;margin:-32px auto 20px;padding:15px;border-radius:20px;
-  border:1px solid rgba(13,71,161,.08);box-shadow:0 16px 45px rgba(8,47,107,.13)
-}
-.search-box input,.search-box select{background:#f8fbff;border-color:#dce8f8}
-.search-box input:focus,.search-box select:focus{border-color:#1976d2;box-shadow:0 0 0 3px rgba(25,118,210,.10)}
-.home-stats{
-  max-width:1000px;margin:25px auto 0;padding:0 20px;display:grid;
-  grid-template-columns:repeat(4,1fr);gap:14px
-}
-.home-stat{background:#fff;border:1px solid #e6eef9;border-radius:16px;padding:17px;text-align:center;box-shadow:0 7px 20px rgba(13,71,161,.06)}
-.home-stat strong{display:block;font-size:21px;color:#0d47a1}.home-stat span{font-size:12px;color:#718096}
-.section{margin:58px auto}.section-title h2{font-size:34px}
-.section-title h2:after{content:"";display:block;width:52px;height:4px;border-radius:5px;background:#1976d2;margin:11px auto 0}
-.categories{grid-template-columns:repeat(6,1fr);gap:15px}
-.category{
-  min-height:145px;padding:22px 10px;position:relative;overflow:hidden;
-  border:1px solid #e4edf9;background:linear-gradient(145deg,#fff,#f5f9ff)
-}
-.category:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:rgba(25,118,210,.07);right:-35px;bottom:-45px}
-.category:hover{background:#fff;transform:translateY(-8px);border-color:#90caf9}
-.category h3{font-size:15px;position:relative;z-index:1}.category .emoji{position:relative;z-index:1}
-.category small{display:block;margin-top:6px;color:#789;position:relative;z-index:1}
-.books-grid{gap:22px}.book-card{border:1px solid #e8eef7}
-.book-image{height:275px}.book-info{padding:17px}
-.feature{border:1px solid #e5edf8;box-shadow:0 8px 25px rgba(13,71,161,.06)}
-.footer-grid a,footer a{color:#e3f2fd;text-decoration:none}
-.promo-banner{
-  max-width:1160px;margin:20px auto 0;padding:0 20px
-}
-.promo-inner{
-  background:linear-gradient(115deg,#082f6b,#1565c0);border-radius:22px;padding:30px;
-  color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;
-  box-shadow:0 14px 35px rgba(13,71,161,.20)
-}
-.promo-inner h2{margin-bottom:7px}.promo-inner p{color:#dbeafe}
-.promo-inner a{white-space:nowrap;background:#fff;color:#0d47a1;padding:13px 20px;border-radius:11px;text-decoration:none;font-weight:bold}
-@media(max-width:950px){.categories{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:768px){
- .navbar{padding:0 4%}.nav-buttons{margin-left:auto;margin-right:8px}.logo{font-size:18px}
- .hero{min-height:360px}.hero h1{font-size:36px}.hero p{font-size:16px}
- .home-stats{grid-template-columns:repeat(2,1fr)}.categories{grid-template-columns:repeat(2,1fr)}
- .promo-inner{flex-direction:column;text-align:center}.section-title h2{font-size:28px}
-}
-
-
-.one-page-note{
-  max-width:1000px;margin:28px auto 0;padding:15px 22px;border-radius:14px;
-  background:#eef6ff;border:1px solid #cfe4ff;color:#0d47a1;text-align:center;
-  display:flex;justify-content:center;gap:12px;flex-wrap:wrap
-}
-.one-page-note span{color:#52708e;font-size:14px}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickMart | Fast Online Shopping</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
+<div class="announcement">
+  <div class="container">
+    <span>⚡ Fast delivery • Fresh products • Easy shopping</span>
+    <span class="announcement-right">Need help? Call: <b>0311-7585046</b></span>
+  </div>
+</div>
 
-    <div class="logo">
-        📚 <span>Maktaba</span> Cordoba
-    </div>
+<header class="header">
+  <div class="container header-row">
+    <a href="#home" class="logo">
+      <span class="logo-icon">Q</span>
+      <span><strong>Quick</strong>Mart<small>ONLINE SHOPPING</small></span>
+    </a>
 
-    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
-    <div class="nav-links">
-        <a href="#home">HOME</a>
-        <a href="#categories">CATEGORIES</a>
-        <a href="#books">BOOKS</a>
-        <a href="#about">ABOUT</a>
-        <a href="#contact">CONTACT</a>
-    </div>
-
-    <div class="nav-buttons">
-        <button class="icon-btn" onclick="toggleDarkMode()" title="Dark mode">🌙</button>
-        <button class="icon-btn" onclick="openAdmin()" title="Admin">⚙️</button>
-
-        <button class="icon-btn" onclick="openCart()">
-            🛒
-            <span class="cart-count" id="cartCount">0</span>
-        </button>
-    </div>
-
-</nav>
-
-
-<!-- HERO -->
-<section class="hero" id="home">
-
-    <div class="hero-content">
-        <div class="hero-badge">✨ Authentic Islamic Knowledge • One Library</div>
-        <h1>Discover Knowledge with<br><span>Maktaba Cordoba</span></h1>
-        <p>Explore Quran, Hadith, Tafseer, Fiqh, Dars-e-Nizami and carefully selected Islamic literature in one modern library.</p>
-        <div class="hero-actions">
-          <a href="#books" class="hero-btn">📚 Explore Books</a>
-          <a href="#categories" class="hero-secondary">Browse Categories</a>
-        </div>
-     </div>
-
-</section>
-
-
-<!-- SEARCH -->
-<div class="search-area">
+    <button class="delivery-location" id="addressButton">
+      <span class="pin">⌖</span>
+      <span class="location-text"><small>DELIVER TO</small><b id="addressLabel">Add your location</b></span>
+      <span class="arrow">⌄</span>
+    </button>
 
     <div class="search-box">
-
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="🔎 Search books, authors..."
-            onkeyup="filterBooks()"
-        >
-
-        <select id="categoryFilter" onchange="filterBooks()">
-
-            <option value="all">All Categories</option>
-            <option value="Quran">Quran</option>
-            <option value="Hadith">Hadith</option>
-            <option value="Tafseer">Tafseer</option>
-            <option value="Fiqh">Fiqh</option>
-            <option value="Dars Nizami">Dars Nizami</option>
-            <option value="History">Islamic History</option>
-
-        </select>
-
+      <span>⌕</span>
+      <input id="searchInput" type="search" placeholder="Search products, brands and categories...">
+      <button>Search</button>
     </div>
 
-</div>
-
-<div class="home-stats">
-  <div class="home-stat"><strong>500+</strong><span>Islamic Books</span></div>
-  <div class="home-stat"><strong>6</strong><span>Main Categories</span></div>
-  <div class="home-stat"><strong>24/7</strong><span>Browse Online</span></div>
-  <div class="home-stat"><strong>🇵🇰</strong><span>Pakistan Delivery</span></div>
-</div>
-
-
-<!-- CATEGORIES -->
-<section class="section" id="categories">
-
-    <div class="section-title">
-        <h2>Islamic Book Categories</h2>
-        <p>Explore our Islamic knowledge collection</p>
+    <div class="header-actions">
+      <button class="header-icon" onclick="showToast('Account system can be connected next.')"><span>♙</span><small>Account</small></button>
+      <button class="header-icon cart-header" id="openCart"><span>🛒</span><small>Cart</small><b id="cartCount">0</b></button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
     </div>
-
-    <div class="categories">
-
-        <div class="category" onclick="selectCategory('Quran')">
-            <div class="emoji">📖</div>
-            <h3>Quran</h3><small>Translations & Studies</small>
-        </div>
-
-        <div class="category" onclick="selectCategory('Hadith')">
-            <div class="emoji">📜</div>
-            <h3>Hadith</h3><small>Collections & Sunnah</small>
-        </div>
-
-        <div class="category" onclick="selectCategory('Tafseer')">
-            <div class="emoji">📚</div>
-            <h3>Tafseer</h3><small>Quranic Commentary</small>
-        </div>
-
-        <div class="category" onclick="selectCategory('Fiqh')">
-            <div class="emoji">🕌</div>
-            <h3>Fiqh</h3><small>Islamic Jurisprudence</small>
-        </div>
-
-        <div class="category" onclick="selectCategory('Dars Nizami')">
-            <div class="emoji">🎓</div>
-            <h3>Dars Nizami</h3><small>Course Books</small>
-        </div>
-
-        <div class="category" onclick="selectCategory('History')">
-            <div class="emoji">🏛️</div>
-            <h3>Islamic History</h3><small>Seerah & History</small>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- BOOKS -->
-<section class="section" id="books">
-
-    <div class="section-title">
-
-        <h2>Featured Books</h2>
-
-        <p>
-            Discover our Islamic book collection
-        </p>
-
-    </div>
-
-    <div class="books-grid" id="booksGrid"></div>
-
-</section>
-
-
-
-<div class="promo-banner">
-  <div class="promo-inner">
-    <div>
-      <h2>🎓 Dars-e-Nizami Library</h2>
-      <p>Explore course books and Islamic study material organised in one dedicated section.</p>
-    </div>
-    <a href="#books" onclick="selectCategory('Dars Nizami')">Explore Dars Nizami →</a>
   </div>
-</div>
 
-
-<div class="one-page-note">
-  <strong>📚 All Categories on One Page</strong>
-  <span>Click any category to instantly filter books below — no separate pages.</span>
-</div>
-
-<!-- FEATURES -->
-<section class="section">
-
-    <div class="section-title">
-        <h2>Why Maktaba Cordoba?</h2>
-    </div>
-
-    <div class="features">
-
-        <div class="feature">
-            <div class="feature-icon">📚</div>
-            <h3>Large Collection</h3>
-            <p>Islamic books from different subjects.</p>
-        </div>
-
-        <div class="feature">
-            <div class="feature-icon">🚚</div>
-            <h3>Home Delivery</h3>
-            <p>Order books from the comfort of your home.</p>
-        </div>
-
-        <div class="feature">
-            <div class="feature-icon">🔒</div>
-            <h3>Easy Ordering</h3>
-            <p>Simple and convenient order process.</p>
-        </div>
-
-        <div class="feature">
-            <div class="feature-icon">📱</div>
-            <h3>WhatsApp Orders</h3>
-            <p>Send your order directly through WhatsApp.</p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CART -->
-<div class="cart-overlay" id="cartOverlay">
-
-    <div class="cart">
-
-        <div class="cart-header">
-
-            <h2>🛒 Your Cart</h2>
-
-            <button class="close" onclick="closeCart()">✕</button>
-
-        </div>
-
-        <div id="cartItems"></div>
-
-        <div class="cart-total">
-
-            <span>Total</span>
-
-            <span id="cartTotal">
-                Rs. 0
-            </span>
-
-        </div>
-
-        <button class="checkout-btn" onclick="openCheckout()">
-            Proceed to Checkout
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- CHECKOUT MODAL -->
-<div class="modal" id="checkoutModal">
-
-    <div class="modal-box">
-
-        <div class="modal-header">
-
-            <h2>📦 Checkout</h2>
-
-            <button class="close" onclick="closeCheckout()">✕</button>
-
-        </div>
-
-        <form onsubmit="placeOrder(event)">
-
-            <div class="form-group">
-
-                <label>Full Name</label>
-
-                <input
-                    type="text"
-                    id="customerName"
-                    required
-                    placeholder="Your name"
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Phone Number</label>
-
-                <input
-                    type="tel"
-                    id="customerPhone"
-                    required
-                    placeholder="03XXXXXXXXX"
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>City</label>
-
-                <input
-                    type="text"
-                    id="customerCity"
-                    required
-                    placeholder="Karachi"
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Delivery Address</label>
-
-                <textarea
-                    id="customerAddress"
-                    required
-                    placeholder="Complete delivery address"
-                ></textarea>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Payment Method</label>
-
-                <select id="paymentMethod">
-
-                    <option>
-                        Cash on Delivery
-                    </option>
-
-                    <option>
-                        Bank Transfer
-                    </option>
-
-                    <option>
-                        Easypaisa / JazzCash
-                    </option>
-
-                </select>
-
-            </div>
-
-            <button class="submit-order" type="submit">
-                ✅ Place Order on WhatsApp
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-
-<!-- BOOK DETAILS -->
-<div class="modal" id="bookModal">
-  <div class="modal-box">
-    <div class="modal-header">
-      <h2>📖 Book Details</h2>
-      <button class="close" onclick="closeBookModal()">✕</button>
-    </div>
-    <div id="bookDetails"></div>
-  </div>
-</div>
-
-<!-- ADMIN DASHBOARD -->
-<div class="admin-overlay" id="adminOverlay">
-  <div class="admin-box">
-    <div class="modal-header">
-      <div>
-        <h2>⚙️ Maktaba Cordoba Admin</h2>
-        <p style="color:#777;margin-top:5px">Local demo dashboard — data is saved in this browser.</p>
+  <nav class="nav">
+    <div class="container nav-row">
+      <button class="all-categories" id="categoryMenuBtn">☰ <span>All Categories</span></button>
+      <div class="nav-links" id="navLinks">
+        <a class="active" href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#products">Shop</a>
+        <a href="#offers">Special Offers</a>
+        <a href="#how">How It Works</a>
       </div>
-      <button class="close" onclick="closeAdmin()">✕</button>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#home">Home</a>
+    <a href="#categories">Categories</a>
+    <a href="#products">Shop</a>
+    <a href="#offers">Special Offers</a>
+    <a href="#how">How It Works</a>
+  </div>
+</header>
+
+
+<main id="home">
+  <section class="hero">
+    <div class="hero-bg-shape shape-one"></div>
+    <div class="hero-bg-shape shape-two"></div>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">YOUR TRUSTED ONLINE STORE</div>
+        <h1>Shopping made <span>simple.</span><br>Delivered made <span>quick.</span></h1>
+        <p>Everything you need for your home, all in one place. Browse products, add to cart and order with your delivery address.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#products">Start Shopping <span>→</span></a>
+          <button class="secondary-btn" id="heroAddressBtn">⌖ Use My Current Location</button>
+        </div>
+        <div class="hero-features">
+          <span>✓ Fresh Products</span>
+          <span>✓ Secure Orders</span>
+          <span>✓ Fast Delivery</span>
+        </div>
+      </div>
+
+      <div class="hero-card-area">
+        <div class="floating-card card-top">⭐ <b>Trusted Store</b><small>Quality checked products</small></div>
+        <div class="shopping-card">
+          <div class="blue-circle"></div>
+          <div class="hero-bag">
+            <div class="bag-handle"></div>
+            <div class="bag-body">
+              <span class="bag-logo">Q</span>
+              <div class="bag-products">🥬 🍎 🥖 🥛</div>
+              <b>QUICKMART</b>
+            </div>
+          </div>
+          <div class="hero-mini-product milk">🥛</div>
+          <div class="hero-mini-product fruit">🍊</div>
+          <div class="hero-mini-product bread">🥖</div>
+        </div>
+        <div class="floating-card card-bottom">⚡ <b>Quick Delivery</b><small>To your saved address</small></div>
+      </div>
     </div>
+  </section>
 
-    <div class="admin-grid">
-      <div class="stat">📚 Books<strong id="statBooks">0</strong></div>
-      <div class="stat">📦 Orders<strong id="statOrders">0</strong></div>
-      <div class="stat">💰 Sales<strong id="statSales">Rs. 0</strong></div>
-      <div class="stat">❤️ Wishlist<strong id="statWish">0</strong></div>
+  <section class="address-strip">
+    <div class="container address-strip-inner">
+      <div class="address-strip-icon">⌖</div>
+      <div><b>Where should we deliver?</b><p id="addressStripText">Add your delivery address to see products and delivery options for your area.</p></div>
+      <button id="addressStripBtn">Use My Location →</button>
     </div>
+  </section>
 
-    <h3>Add New Book</h3>
-    <form class="admin-form" onsubmit="addBookFromAdmin(event)">
-      <input id="adminTitle" required placeholder="Book title">
-      <input id="adminAuthor" required placeholder="Author">
-      <select id="adminCategory">
-        <option>Quran</option><option>Hadith</option><option>Tafseer</option>
-        <option>Fiqh</option><option>Dars Nizami</option><option>History</option>
-      </select>
-      <input id="adminPrice" type="number" min="0" required placeholder="Price (PKR)">
-      <input id="adminStock" type="number" min="0" required placeholder="Stock">
-      <input id="adminImage" required placeholder="Cover image URL">
-      <button type="submit">➕ Add Book</button>
-    </form>
-
-    <h3 style="margin-top:25px">Book Inventory</h3>
-    <div style="overflow:auto">
-      <table class="admin-table">
-        <thead><tr><th>Book</th><th>Category</th><th>Price</th><th>Stock</th><th>Action</th></tr></thead>
-        <tbody id="adminBooks"></tbody>
-      </table>
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-top">
+        <div><span>SHOP BY CATEGORY</span><h2>What are you looking for?</h2></div>
+        <a href="#products">View all products →</a>
+      </div>
     </div>
+      <div class="category-grid">
+        <button class="category active-category" data-filter="all"><span>🛒</span><b>All Products</b></button>
+        <button class="category" data-filter="grocery"><span>🥬</span><b>Groceries</b></button>
+        <button class="category" data-filter="fruits"><span>🍎</span><b>Fresh Produce</b></button>
+        <button class="category" data-filter="dairy"><span>🥛</span><b>Dairy & Eggs</b></button>
+        <button class="category" data-filter="bakery"><span>🥖</span><b>Bakery</b></button>
+        <button class="category" data-filter="snacks"><span>🍪</span><b>Snacks</b></button>
+        <button class="category" data-filter="beverages"><span>🥤</span><b>Beverages</b></button>
+        <button class="category" data-filter="home"><span>🧴</span><b>Home Care</b></button>
+      </div>
+    </div>
+  </section>
 
-    <h3 style="margin-top:25px">Recent Orders</h3>
-    <div style="overflow:auto">
-      <table class="admin-table">
-        <thead><tr><th>Customer</th><th>Phone</th><th>Items</th><th>Total</th><th>Date</th></tr></thead>
-        <tbody id="adminOrders"></tbody>
-      </table>
+  <section class="offers section-small" id="offers">
+    <div class="container offers-grid">
+      <article class="offer offer-blue">
+        <div><span>WEEKLY OFFERS</span><h3>Save more on<br>your everyday needs.</h3><p>Special prices available now.</p><a href="#products">Shop offers →</a></div>
+        <div class="offer-emoji">🛍️</div>
+      </article>
+      <article class="offer offer-white">
+        <div><span>FRESH EVERY DAY</span><h3>Fresh choices.<br>Better prices.</h3><a href="#products">Shop fresh →</a></div>
+        <div class="offer-emoji">🥑</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="products-section" id="products">
+    <div class="container">
+      <div class="section-top product-heading">
+        <div><span>POPULAR NOW</span><h2>Featured Products</h2><p>Simple prices. Easy shopping. Add your favorites to the cart.</p></div>
+        <div class="filter-row">
+          <button class="filter active-filter" data-filter="all">All</button>
+          <button class="filter" data-filter="grocery">Grocery</button>
+          <button class="filter" data-filter="fruits">Fresh</button>
+          <button class="filter" data-filter="dairy">Dairy</button>
+          <button class="filter" data-filter="snacks">Snacks</button>
+        </div>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state" id="emptyState">No products found. Try another search.</div>
+    </div>
+  </section>
+
+  <section class="how-section" id="how">
+    <div class="container">
+      <div class="center-heading"><span>HOW QUICKMART WORKS</span><h2>Shopping in 3 easy steps</h2></div>
+      <div class="steps">
+        <div class="step"><span>1</span><div class="step-icon">⌖</div><h3>Add Address</h3><p>Save your delivery location and contact details.</p></div>
+        <div class="step"><span>2</span><div class="step-icon">🛒</div><h3>Choose Products</h3><p>Browse categories and add products to your cart.</p></div>
+        <div class="step"><span>3</span><div class="step-icon">✓</div><h3>Place Order</h3><p>Review your cart and confirm your delivery details.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- PRODUCTS SECTION -->
+<section class="products-section">
+  <div class="container">
+    <h2>Popular Products</h2>
+    <div class="products-grid" id="productsGrid">
+      <!-- Products yahan JS se load honge -->
     </div>
   </div>
-</div>
+</section>
 
-<div class="toast" id="toast"></div>
-
-<!-- FOOTER -->
-<footer id="contact">
-
-    <div class="footer-grid">
-
-        <div>
-
-            <h3>📚 Maktaba Cordoba</h3>
-
-            <p>
-                A modern online Islamic bookstore
-                dedicated to spreading authentic Islamic knowledge.
-            </p>
-
-        </div>
-
-        <div>
-
-            <h3>Quick Links</h3>
-
-            <ul>
-
-                <li>Home</li>
-                <li>Books</li>
-                <li>Categories</li>
-                <li>About Us</li>
-
-            </ul>
-
-        </div>
-
-        <div>
-
-            <h3>Categories</h3>
-
-            <ul>
-
-                <li>Quran</li>
-                <li>Hadith</li>
-                <li>Tafseer</li>
-                <li>Fiqh</li>
-
-            </ul>
-
-        </div>
-
-        <div>
-    <h3>Contact</h3>
-    <p>📱 WhatsApp: <a href="https://wa.me/923117585046" target="_blank">03117585046</a></p>
-    <p>📧 Email: info@maktabacordoba.com</p>
-        </div>
+<footer>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#home" class="logo"><span class="logo-icon">Q</span><span><strong>Quick</strong>Mart<small>ONLINE SHOPPING</small></span></a>
+      <p>A modern online store experience built for quick and easy shopping.</p>
     </div>
- 
-    <div class="copyright">
-
-        © 2026 Maktaba Cordoba — All Rights Reserved
-
-    </div>
-
+    <div><h4>Shop</h4><a href="#categories">Categories</a><a href="#products">All Products</a><a href="#offers">Special Offers</a></div>
+    <div><h4>Customer</h4><a href="#how">How It Works</a><button onclick="openAddressModal()">Manage Address</button><a href="#">Help Center</a></div>
+    <div><h4>Contact</h4><p>Pakistan</p><p>0311-7585046</p><p>support@quickmart.com</p></div>
+  </div>
+  <div class="container footer-bottom">© 2026 QuickMart. All rights reserved.</div>
 </footer>
 
-
-<script>
-
-
-/* =========================
-   MAKTABA CORDOBA PRO STORE
-========================= */
-
-const defaultBooks = [
-{id:1,title:"The Noble Quran",author:"Various",category:"Quran",price:1200,stock:20,image:"https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=600&q=80"},
-{id:2,title:"Sahih Bukhari",author:"Imam Bukhari",category:"Hadith",price:2500,stock:12,image:"https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=600&q=80"},
-{id:3,title:"Sahih Muslim",author:"Imam Muslim",category:"Hadith",price:2300,stock:15,image:"https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=600&q=80"},
-{id:4,title:"Tafseer Ibn Kathir",author:"Ibn Kathir",category:"Tafseer",price:3200,stock:8,image:"https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=80"},
-{id:5,title:"Fiqh Us Sunnah",author:"Sayyid Sabiq",category:"Fiqh",price:1800,stock:14,image:"https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=600&q=80"},
-{id:6,title:"Dars Nizami Complete",author:"Islamic Studies",category:"Dars Nizami",price:4500,stock:10,image:"https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80"},
-{id:7,title:"Seerat-un-Nabi",author:"Allama Shibli Nomani",category:"History",price:2000,stock:9,image:"https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80"},
-{id:8,title:"Ar-Raheeq Al-Makhtum",author:"Safiur Rahman",category:"History",price:1600,stock:18,image:"https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80"}
-];
-
-let books = JSON.parse(localStorage.getItem("mc_books")) || defaultBooks;
-let cart = JSON.parse(localStorage.getItem("mc_cart")) || [];
-let wishlist = JSON.parse(localStorage.getItem("mc_wishlist")) || [];
-let orders = JSON.parse(localStorage.getItem("mc_orders")) || [];
-
-function saveData(){
-  localStorage.setItem("mc_books", JSON.stringify(books));
-  localStorage.setItem("mc_cart", JSON.stringify(cart));
-  localStorage.setItem("mc_wishlist", JSON.stringify(wishlist));
-  localStorage.setItem("mc_orders", JSON.stringify(orders));
-}
-
-function money(n){ return "Rs. " + Number(n).toLocaleString(); }
-
-function toast(msg){
-  const el=document.getElementById("toast");
-  el.textContent=msg; el.style.display="block";
-  clearTimeout(window.toastTimer);
-  window.toastTimer=setTimeout(()=>el.style.display="none",2200);
-}
-
-function displayBooks(list=books){
-  const grid=document.getElementById("booksGrid");
-  grid.innerHTML="";
-  if(!list.length){
-    grid.innerHTML='<p style="grid-column:1/-1;text-align:center;padding:40px">❌ No books found.</p>';
-    return;
-  }
-  list.forEach(book=>{
-    const wished=wishlist.includes(book.id);
-    const out=Number(book.stock||0)<=0;
-    grid.innerHTML+=`
-      <div class="book-card">
-        <div class="book-image"><img src="${book.image}" alt="${book.title}"></div>
-        <div class="book-info">
-          <div class="book-category">${book.category}</div>
-          <h3 class="book-title">${book.title}</h3>
-          <div class="author">✍️ ${book.author}</div>
-          <div class="price">${money(book.price)}</div>
-          <div class="book-stock ${out?'out':''}">
-            ${out?'❌ Out of stock':'✅ '+book.stock+' in stock'}
-          </div>
-          <div class="book-actions" style="margin-top:9px">
-            <button class="btn btn-cart" ${out?'disabled':''} onclick="addToCart(${book.id})">
-              🛒 ${out?'Unavailable':'Add to Cart'}
-            </button>
-            <button class="wishlist-btn ${wished?'active':''}" onclick="toggleWishlist(${book.id})">
-              ${wished?'♥':'♡'}
-            </button>
-          </div>
-          <button class="quick-view" onclick="openBookModal(${book.id})">👁 Quick View</button>
-          
-          <!-- WHATSAPP BUTTON -->
-          <a href="https://wa.me/923117585046?text=Assalamualaikum!%20Mujhe%20*${book.title}*%20by%20*${book.author}*%20order%20karni%20hai.%0A%0APrice:%20Rs.%20${book.price}%0APayment:%20Cash%20on%20Delivery%0ADelivery%20Address:%20" class="whatsapp-btn">
-              📱 Order on WhatsApp
-          </a>
-          <div style="margin-top: 8px; font-size: 12px; color: #333; text-align: center; line-height: 1.5;">
-              <b>Payment:</b> Cash on Delivery ✅<br>
-              <b>Delivery:</b> All Pakistan - Rs. 250 | 3 to 5 Days
-          </div>
-        </div>
+<!-- ADDRESS MODAL -->
+<div class="modal-overlay" id="addressModal">
+  <div class="address-modal">
+    <button class="modal-close" onclick="closeAddressModal()">×</button>
+    <div class="modal-title"><div class="modal-pin">⌖</div><div><span>DELIVERY DETAILS</span><h2>Set your delivery location</h2><p>Use your current location or enter your address manually.</p></div></div>
+    <button type="button" class="current-location-btn" id="currentLocationBtn">⌖ Use My Current Location</button>
+    <div class="location-status" id="locationStatus">Your exact GPS location will only be used after you allow location permission.</div>
+    <form id="addressForm">
+      <div class="form-row">
+        <label>Full Name<input id="fullName" required placeholder="Enter your full name"></label>
+        <label>Phone Number<input id="phone" required placeholder="03XX-XXXXXXX"></label>
       </div>
-    `;
-  });
-} // <-- YE WALA } ZAROORI THA
-function filterBooks(){
-  const search=document.getElementById("searchInput").value.toLowerCase();
-  const category=document.getElementById("categoryFilter").value;
-  displayBooks(books.filter(b=>{
-    const s=b.title.toLowerCase().includes(search)||b.author.toLowerCase().includes(search)||b.category.toLowerCase().includes(search);
-    return s && (category==="all" || b.category===category);
-  }));
-}
-
-function selectCategory(category){
-  document.getElementById("categoryFilter").value=category;
-  document.getElementById("books").scrollIntoView({behavior:"smooth"});
-  filterBooks();
-}
-
-function addToCart(id){
-  const book=books.find(b=>b.id===id);
-  if(!book || book.stock<=0) return toast("Book is out of stock");
-  const item=cart.find(x=>x.id===id);
-  if(item){
-    if(item.quantity>=book.stock) return toast("No more stock available");
-    item.quantity++;
-  }else cart.push({...book,quantity:1});
-  saveData(); updateCart(); toast("Added to cart 📚");
-}
-
-function buyNow(id){
-  addToCart(id);
-  openCheckout();
-}
-
-function updateCart(){
-  const container=document.getElementById("cartItems");
-  let total=0,count=0;
-  container.innerHTML="";
-  cart.forEach(item=>{
-    const current=books.find(b=>b.id===item.id);
-    if(!current) return;
-    total+=current.price*item.quantity; count+=item.quantity;
-    container.innerHTML+=`
-      <div class="cart-item">
-        <img src="${current.image}">
-        <div class="cart-item-info">
-          <strong>${current.title}</strong>
-          <p>${money(current.price)}</p>
-          <div class="quantity">
-            <button onclick="changeQuantity(${current.id},-1)">−</button>
-            <span>${item.quantity}</span>
-            <button onclick="changeQuantity(${current.id},1)">+</button>
-          </div>
-          <div class="remove" onclick="removeFromCart(${current.id})">Remove</div>
-        </div>
-      </div>`;
-  });
-  if(!cart.length) container.innerHTML='<p style="text-align:center;padding:40px">Your cart is empty 📚</p>';
-  document.getElementById("cartCount").textContent=count;
-  document.getElementById("cartTotal").textContent=money(total);
-}
-
-function changeQuantity(id,amount){
-  const item=cart.find(x=>x.id===id), book=books.find(x=>x.id===id);
-  if(!item||!book) return;
-  if(amount>0 && item.quantity>=book.stock) return toast("Maximum stock reached");
-  item.quantity+=amount;
-  if(item.quantity<=0) cart=cart.filter(x=>x.id!==id);
-  saveData(); updateCart();
-}
-
-function removeFromCart(id){
-  cart=cart.filter(x=>x.id!==id); saveData(); updateCart(); toast("Removed from cart");
-}
-
-function openCart(){document.getElementById("cartOverlay").style.display="block"}
-function closeCart(){document.getElementById("cartOverlay").style.display="none"}
-
-function openCheckout(){
-  if(!cart.length) return toast("Your cart is empty");
-  closeCart();
-  document.getElementById("checkoutModal").style.display="flex";
-}
-function closeCheckout(){document.getElementById("checkoutModal").style.display="none"}
-
-function placeOrder(event){
-  event.preventDefault();
-  const name=document.getElementById("customerName").value.trim();
-  const phone=document.getElementById("customerPhone").value.trim();
-  const city=document.getElementById("customerCity").value.trim();
-  const address=document.getElementById("customerAddress").value.trim();
-  const payment=document.getElementById("paymentMethod").value;
-  let total=0;
-  const orderItems=cart.map(item=>{
-    const book=books.find(b=>b.id===item.id);
-    const subtotal=book.price*item.quantity;
-    total+=subtotal;
-    return {id:book.id,title:book.title,quantity:item.quantity,price:book.price,subtotal};
-  });
-
-  const order={
-    id:"MC-"+Date.now().toString().slice(-7),
-    name,phone,city,address,payment,items:orderItems,total,
-    date:new Date().toLocaleString()
-  };
-  orders.unshift(order);
-
-  cart.forEach(item=>{
-    const b=books.find(x=>x.id===item.id);
-    if(b) b.stock=Math.max(0,Number(b.stock)-item.quantity);
-  });
-
-  saveData();
-  updateCart(); displayBooks(); updateAdmin();
-
-  let message=`📚 *NEW ORDER - MAKTABA CORDOBA*%0A%0A`;
-  message+=`🧾 Order: ${order.id}%0A👤 Name: ${name}%0A📱 Phone: ${phone}%0A🏙️ City: ${city}%0A📍 Address: ${address}%0A💳 Payment: ${payment}%0A%0A📚 *BOOKS:*%0A`;
-  orderItems.forEach(i=>message+=`• ${i.title} × ${i.quantity} = Rs. ${i.subtotal.toLocaleString()}%0A`);
-  message+=`%0A💰 *TOTAL: Rs. ${total.toLocaleString()}*`;
-
-  const whatsappNumber="923117585046";
-  window.open("https://wa.me/"+whatsappNumber+"?text="+message,"_blank");
-
-  cart=[];
-  saveData();
-  updateCart();
-  closeCheckout();
-  event.target.reset();
-  toast("Order created successfully ✅");
-}
-
-function toggleWishlist(id){
-  wishlist=wishlist.includes(id)?wishlist.filter(x=>x!==id):[...wishlist,id];
-  saveData(); displayBooks(); updateAdmin();
-}
-
-function openBookModal(id){
-  const b=books.find(x=>x.id===id);
-  if(!b)return;
-  document.getElementById("bookDetails").innerHTML=`
-    <div class="detail-grid">
-      <img src="${b.image}" alt="${b.title}">
-      <div>
-        <div class="book-category">${b.category}</div>
-        <h2>${b.title}</h2>
-        <p style="margin-top:8px">✍️ ${b.author}</p>
-        <div class="detail-price">${money(b.price)}</div>
-        <p class="detail-desc">A valuable Islamic resource from the Maktaba Cordoba collection. Check the book details and availability before ordering.</p>
-        <p><strong>Availability:</strong> ${b.stock>0?b.stock+" copies available":"Out of stock"}</p>
-        <button class="checkout-btn" style="margin-top:15px" onclick="addToCart(${b.id});closeBookModal()">🛒 Add to Cart</button>
+      <label>Complete Address<textarea id="fullAddress" required placeholder="House / Street / Area"></textarea></label>
+      <input type="hidden" id="latitude">
+      <input type="hidden" id="longitude">
+      <div class="form-row">
+        <label>City<input id="city" required placeholder="Your city"></label>
+        <label>Area / Sector<input id="area" placeholder="Area or sector"></label>
       </div>
-    </div>`;
-  document.getElementById("bookModal").style.display="flex";
-}
-function closeBookModal(){document.getElementById("bookModal").style.display="none"}
+      <label class="save-default"><input type="checkbox" id="saveDefault" checked> <span>Save as my default delivery address</span></label>
+      <button class="save-address-btn" type="submit">Save Delivery Address →</button>
+    </form>
+  </div>
+</div>
 
-function openAdmin(){
-  const password=prompt("Enter admin password:");
-  if(password==="12345"){
-    document.getElementById("adminOverlay").style.display="flex";
-    updateAdmin();
-  }else if(password!==null) alert("Incorrect password");
-}
-function closeAdmin(){document.getElementById("adminOverlay").style.display="none"}
+<!-- CART -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head"><div><span>YOUR ORDER</span><h2>Shopping Cart</h2></div><button id="closeCart">×</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-address-box">
+    <small>DELIVERY ADDRESS</small>
+    <b id="cartAddress">No location added</b>
+    <button onclick="openAddressModal()">Change</button>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><strong id="cartTotal">Rs. 0</strong></div>
+    <button class="whatsapp-order-btn" onclick="sendWhatsAppOrder()">Order on WhatsApp</button>
+  </div>
+</aside>
 
-function addBookFromAdmin(e){
-  e.preventDefault();
-  const book={
-    id:Date.now(),
-    title:document.getElementById("adminTitle").value.trim(),
-    author:document.getElementById("adminAuthor").value.trim(),
-    category:document.getElementById("adminCategory").value,
-    price:Number(document.getElementById("adminPrice").value),
-    stock:Number(document.getElementById("adminStock").value),
-    image:document.getElementById("adminImage").value.trim()
-  };
-  books.push(book); saveData(); displayBooks(); updateAdmin();
-  e.target.reset(); toast("Book added successfully");
-}
-
-function deleteBook(id){
-  if(!confirm("Delete this book?"))return;
-  books=books.filter(b=>b.id!==id);
-  cart=cart.filter(i=>i.id!==id);
-  wishlist=wishlist.filter(i=>i!==id);
-  saveData(); displayBooks(); updateCart(); updateAdmin();
-}
-
-function updateAdmin(){
-  const sales=orders.reduce((s,o)=>s+Number(o.total||0),0);
-  document.getElementById("statBooks").textContent=books.length;
-  document.getElementById("statOrders").textContent=orders.length;
-  document.getElementById("statSales").textContent=money(sales);
-  document.getElementById("statWish").textContent=wishlist.length;
-
-  const tbody=document.getElementById("adminBooks");
-  if(tbody){
-    tbody.innerHTML=books.map(b=>`
-      <tr>
-        <td>${b.title}</td><td>${b.category}</td><td>${money(b.price)}</td><td>${b.stock}</td>
-        <td class="admin-actions"><button class="delete-book" onclick="deleteBook(${b.id})">Delete</button></td>
-      </tr>`).join("");
-  }
-
-  const ot=document.getElementById("adminOrders");
-  if(ot){
-    ot.innerHTML=orders.length?orders.slice(0,20).map(o=>`
-      <tr>
-        <td>${o.name}</td><td>${o.phone}</td><td>${o.items.map(i=>i.title+" × "+i.quantity).join("<br>")}</td>
-        <td>${money(o.total)}</td><td>${o.date}</td>
-      </tr>`).join(""):'<tr><td colspan="5">No orders yet.</td></tr>';
-  }
-}
-
-function toggleDarkMode(){
-  document.body.classList.toggle("dark");
-  localStorage.setItem("mc_dark",document.body.classList.contains("dark")?"1":"0");
-}
-
-function toggleMobileMenu(){
-  document.querySelector(".nav-links").classList.toggle("open");
-}
-
-
-function initProNavigation(){
-  const links=[...document.querySelectorAll(".nav-links a")];
-  const sections=links.map(a=>{
-    const id=a.getAttribute("href");
-    return id && id.startsWith("#") ? document.querySelector(id) : null;
-  }).filter(Boolean);
-
-  links.forEach(a=>{
-    const href=a.getAttribute("href");
-    if(href && href.startsWith("#")){
-      a.addEventListener("click",e=>{
-        const target=document.querySelector(href);
-        if(target){
-          e.preventDefault();
-          target.scrollIntoView({behavior:"smooth",block:"start"});
-          document.querySelector(".nav-links").classList.remove("open");
-        }
-      });
-    }
-  });
-
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        links.forEach(a=>a.classList.remove("active"));
-        const active=links.find(a=>a.getAttribute("href")==="#"+entry.target.id);
-        if(active) active.classList.add("active");
-      }
-    });
-  },{rootMargin:"-35% 0px -55% 0px",threshold:0});
-
-  sections.forEach(s=>observer.observe(s));
-}
-
-/* START */
-if(localStorage.getItem("mc_dark")==="1") document.body.classList.add("dark");
-displayBooks();
-updateCart();
-
-</script>
-
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
 </body>
 </html>

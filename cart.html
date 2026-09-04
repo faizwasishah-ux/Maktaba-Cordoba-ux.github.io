@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuiickMart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="cartItems"></h1>
+    <h2 id="totalPrice"></h2>
+    <button onclick="checkoutWhatsapp()">order on Whatsapp</button>
+
+    <script>
+        let cart =JSON.parse(localStorage.getItem("quickmartBlueCart")) || [];
+        let cartDiv = document.getElementById("cartItems");
+        let total = 0;
+         if(cart.length ===0) {
+            cartDiv.innerHTML = "<P>Cart khali hai</p>";
+         } else {
+            cart.forEach(item =>  {
+                total += item.price  * item.qty;
+                cartDiv.innerHTNL  +=
+            <div class="cart-item">
+                <h3>${item.name}</h3>
+                <p>Rs ${item.price} x  ${item.qty}  = Rs.${item.price  * item.qty}</p>
+                </div>
+                ;
+         });
+        }
+        document.getElementById("totlePrice") .innerText  =  "Totle: Rs.  "  +total; // 9. Spelling + total
+        function checkoutWhatsApp(){
+            let  msg = "Order Details :%0A";
+            cart.forEach(item  =>  {
+            msg  += '${item.name} x  ${item.qty}  = Rs.${item.price  *  item.qty}%0A';
+            });
+            msg +=  'Totel: Rs. ${total}';
+            window.open('https://wa.me/03117585046?text=${encodeURIComponent(msg)}');
+            
+        }
+
+    </script>
+</body>
+</html>
