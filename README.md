@@ -1,20 +1,20 @@
-# Maktaba Cordoba
-### Islamic Bookstore
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-**Maktaba Cordoba** Pakistan ki online Islamic bookstore hai. 
-Hum Quran, Hadith, Seerat, Tafseer aur deegar Islami kitaben faraham karte hain.
+# Run and deploy your AI Studio app
 
-## 📚 Categories
-- Quran & Tafseer
-- Seerat-un-Nabi ﷺ
-- Hadith
-- Fiqh & Islami Taleem
-- Bachon ki Islami Kitaben
+This contains everything you need to run your app locally.
 
-## 📱 Order kaise karein?
-Website se book select karein aur WhatsApp par order karein.
+View your app in AI Studio: https://ai.studio/apps/7ae718af-5b31-4a1e-ba1d-b49ca93c9b9c
 
-Website: https://faizwasishah-ux.github.io
+## Run Locally
 
----
-**Contact**: WhatsApp +92 3XX XXXXXXX
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

@@ -1,0 +1,6 @@
+{
+  "name": "Zarghun Studio - Bridal & Wedding Couture",
+  "description": "Luxury bridal boutique featuring bespoke wedding gowns, feather couture collection, fitting consultations, and bridal shopping.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
